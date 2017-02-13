@@ -5,10 +5,13 @@ import AlamofireObjectMapper
 import RealmSwift
 
 
+/// Class to manage Repository request
 class GithubAPI: NSObject {
     
+    /// Github api instance
     static let sharedInstance = GithubAPI()
     
+    /// Github endpoint url
     lazy var repositoryEndpointURL: String = {
         
         if let fileUrl = Bundle.main.url(forResource: "GithubAPI", withExtension: "plist"),
@@ -22,6 +25,11 @@ class GithubAPI: NSObject {
     }()
     
     
+    /// Request repositories from Github API by username
+    ///
+    /// - Parameters:
+    ///   - username: username to search
+    ///   - callback: finish callback
     func requestRepositories(forUser username: String, callback: @escaping (([RepositoryModel]?, GithubAPIErrorEnum?) -> ())) {
         
         let url = String(format:repositoryEndpointURL, username)
@@ -51,6 +59,11 @@ class GithubAPI: NSObject {
     }
     
     
+    /// Request repositories from Database by username
+    ///
+    /// - Parameters:
+    ///   - username: username to search
+    ///   - callback: finish callback
     func requestRepositoriesFromDB(forUser username: String, callback: @escaping (([RepositoryModel]?, GithubAPIErrorEnum?) -> ())) {
         
         do {
@@ -66,6 +79,9 @@ class GithubAPI: NSObject {
     }
     
     
+    /// Save repository in database
+    ///
+    /// - Parameter repository: repository to save
     func saveOnDB(repository: RepositoryModel) {
         
         let realm = try! Realm()

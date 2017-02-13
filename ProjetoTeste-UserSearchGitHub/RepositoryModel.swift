@@ -14,23 +14,26 @@ class RepositoryModel: Object, Mappable {
     /// Repository url
     dynamic var url: String?
     
+    /// Repository language
     dynamic var language: String?
     
+    /// Repository date creation
     dynamic var createdAt: String?
     
+    /// Repository date update
     dynamic var updatedAt: String?
     
+    /// Repository description
     dynamic var descriptionValue: String?
     
+    /// Repository stars
     dynamic var stars = 0
     
+    /// Repository forks
     dynamic var forks = 0
     
+    /// Repository watchers
     dynamic var watchers = 0
-    
-    
-    
-    
     
     /// Repository owner
     dynamic var owner: GithubUserModel?

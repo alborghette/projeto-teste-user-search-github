@@ -1,11 +1,18 @@
 import UIKit
 
+/// Class to manage Repository List Table View
 class RepositoryListTableViewController: UITableViewController {
 
+    /// Segue identifier
     let kSegueRepositoryDetailIdentifier = "goToRepositoryDetail"
+    
+    /// Cell identifier
     let kReusableCellIdentifier = "RepositoryListCell"
     
+    /// Repository container
     var repositoryList: [RepositoryModel] = []
+    
+    /// Repository selected
     var repositorySelected: RepositoryModel? = nil
     
     override func viewDidLoad() {

@@ -2,17 +2,28 @@ import UIKit
 import JGProgressHUD
 import Toaster
 
+/// View controller to manage search view
 class SearchViewController: UIViewController {
-
+    
+    /// Segue identifier
     let kSegueRepositoryList = "goToRepositoryList"
-    let kLastUsernameKey = "lastUsername"    
+
+    /// Last username searched key
+    let kLastUsernameKey = "lastUsername"
+    
+    /// Error network message
     let kErrorNetworkMessage = "Error network"
+    
+    /// Error database message
     let kDataBaseErrorMessage = "Error database"
     
+    /// Progress hud
     let hud = JGProgressHUD(style: JGProgressHUDStyle.dark)
     
+    /// Repository list container
     var repositoryList: [RepositoryModel] = []
     
+    /// username textfield
     @IBOutlet weak var username: UITextField!
     
     
@@ -29,6 +40,7 @@ class SearchViewController: UIViewController {
         self.title = "Github User Search"
     }
     
+    /// Set last user searched on textfield
     func setLastUserSearched() {
         if let lastUsername: String = UserDefaults.standard.value(forKey: kLastUsernameKey) as? String {
             username.text = lastUsername
@@ -37,6 +49,10 @@ class SearchViewController: UIViewController {
     
 
     // MARK: - IBActions
+    
+    /// Search user by username
+    ///
+    /// - Parameter sender: sender
     @IBAction func searchUser(_ sender: Any) {
         
         if (!(username.text?.isEmpty)!) {
